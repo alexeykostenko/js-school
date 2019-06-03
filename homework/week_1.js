@@ -41,7 +41,19 @@ groupBy([{ gender: 'male', name: 'Max'}, { gender: 'male', name: 'Fred'}, { gend
  *  если метод принимет многомерный массив, он должен "сплюснуть" его на одно измерение
  */
 function flatten(array) {
-    // TODO
+    let arrayFlatten = [];
+
+    array.forEach(function (value) {
+        if (Array.isArray(value)) {
+            value.forEach(function (innerValue) {
+                arrayFlatten.push(innerValue);
+            })
+        } else {
+            arrayFlatten.push(value);
+        }
+    });
+
+    return arrayFlatten;
 }
 
 flatten([1, [2, [3, [4]], 5]]);
